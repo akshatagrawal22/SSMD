@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Register information at Blockchain</title>
+
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <script src="./node_modules/web3/dist/web3.min.js"></script>
+  <script src="./index.js"></script>
+</head>
+
+<body class="container">
+  <!-- date Identity Card -->
+  < <div class="row">
+    <div>
+      <h3 class="sub-header">Set Current Contract Address</h3>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <table>
+            <tr>
+              <td><label for="newInfo1">Address :</label> </td>
+              <td>
+                <input class="form-control" id="newInfo1">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <a href="#" onclick="setContractAddress()" class="btn btn-primary">Set</a>
+      </form>
+    </div>
+    </div>
+
+
+
+    <div class="row">
+      <div>
+        <form class="form-inline" role="form">
+          <a href="#" onclick="getContractAddress()" class="btn btn-primary">Get</a>
+          <div class="form-group">
+            <table>
+              <tr>
+                <td>Contract Address is :</td>
+                <td>
+                  <label id="lastInfo1">
+                </td>
+              </tr>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- <h1 class="page-header">Register information at Blockchain - RSK network</h1> -->
+
+    <div class="row">
+      <div>
+        <h3 class="sub-header">Set Parent Hospital</h3>
+        <form class="form-inline" role="form">
+          <div class="form-group">
+            <table>
+              <tr>
+                <td><label for="newInfo">Info:</label> </td>
+                <td>
+                  <input class="form-control" id="newInfo">
+                </td>
+              </tr>
+            </table>
+          </div>
+          <a href="#" onclick="updateParentHospital()" class="btn btn-primary">Set</a>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <h3 class="sub-header"></h3>
+        <form class="form-inline" role="form">
+          <a href="#" onclick="viewParentHospital()" class="btn btn-primary">Get</a>
+          <div class="form-group">
+            <table>
+              <tr>
+                <td>Parent Hospital Address :</td>
+                <td>
+                  <label id="lastInfo">
+                </td>
+              </tr>
+            </table>
+          </div>
+</body>
+
+</html>
