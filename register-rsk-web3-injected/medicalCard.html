@@ -56,10 +56,10 @@
         </button> -->
 
 
-        <div id="navbarCollapse" class="navbar-collapse">
+        <div id="navbarCollapse" class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a id="nav1" href="centralDatabase.html" class="nav-link active">
+              <a href="centralDatabase.html" class="nav-link active">
                 Central Database
               </a>
             </li>
@@ -96,255 +96,218 @@
   <br />
   <br />
 
-  <div class="row">
-    <div>
-      <h3 class="sub-header">Set Central Database Address</h3>
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <table>
-            <tr>
-              <td><label for="central-database-address">Address :</label> </td>
-              <td>
-                <input class="form-control" id="central-database-address">
-              </td>
-            </tr>
-          </table>
+  <table>
+    <tr>
+      <td>
+        <div class="row">
+          <div>
+            <h3 class="sub-header">Set Medical Data Contract Address</h3>
+            <form class="form-inline" role="form">
+              <div class="form-group">
+                <table>
+                  <tr>
+                    <td><label for="medical-data-address">Address :</label> </td>
+                    <td>
+                      <input class="form-control" id="medical-data-address">
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <a href="#" onclick="setContractAddress2()" class="btn btn-primary">Set</a>
+            </form>
+          </div>
         </div>
-        <a href="#" onclick="setCentralDatabaseAddress()" class="btn btn-primary">Set</a>
-      </form>
-    </div>
-  </div>
 
-  <br />
-
-
-  <div class="row">
-    <div>
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <table>
-            <tr>
-              <td>Contract Address is :</td>
-              <td>
-                <label id="get-central-database-address">
-              </td>
-            </tr>
-          </table>
+        <br />
+      </td>
+      <td>
+        <div class="row">
+          <div>
+            <form class="form-inline" role="form">
+              <div class="form-group">
+                <table>
+                  <tr>
+                    <td>Contract Address is :</td>
+                    <td>
+                      <label id="get-medical-data-address">
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </form>
+          </div>
         </div>
-      </form>
-    </div>
-  </div>
-
-  <br />
-
-  <div class="row">
-    <div>
-      <h3 class="sub-header">Update Doctor</h3>
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <table>
-            <tr>
-              <td><label for="central-database-doctor-address">Doctor Address :</label> </td>
-              <td>
-                <input class="form-control" id="central-database-doctor-address">
-              </td>
-            </tr>
-
-            <tr>
-              <td><label for="central-database-doctor-identity-address">Identity Card Address :</label> </td>
-              <td>
-                <input class="form-control" id="central-database-doctor-identity-address">
-              </td>
-            </tr>
-
-          </table>
-        </div>
-        <a href="#" onclick="updateDoctor()" class="btn btn-primary">Set</a>
-      </form>
-    </div>
-  </div>
-
-  <br />
-
-  <div class="row">
-    <div>
-      <h3 class="sub-header">Update Hospital</h3>
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <table>
-            <tr>
-              <td><label for="central-database-hospital-address">Hospital Address :</label> </td>
-              <td>
-                <input class="form-control" id="central-database-hospital-address">
-              </td>
-            </tr>
-
-            <tr>
-              <td><label for="central-database-hospital-identity-address">Identity Card Address :</label> </td>
-              <td>
-                <input class="form-control" id="central-database-hospital-identity-address">
-              </td>
-            </tr>
-
-          </table>
-        </div>
-        <a href="#" onclick="updateHospital()" class="btn btn-primary">Set</a>
-      </form>
-    </div>
-  </div>
-
-  <br />
+        <br />
+        <br />
+      </td>
+    </tr>
+  </table>
 
 
-  <div class="row">
-    <div>
-      <h3 class="sub-header">Update Patient</h3>
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <table>
-            <tr>
-              <td><label for="central-database-patient-address">Patient Address :</label> </td>
-              <td>
-                <input class="form-control" id="central-database-patient-address">
-              </td>
-            </tr>
-
-            <tr>
-              <td><label for="central-database-patient-identity-address">Identity Card Address :</label> </td>
-              <td>
-                <input class="form-control" id="central-database-patient-identity-address">
-              </td>
-            </tr>
-
-          </table>
-        </div>
-        <a href="#" onclick="updatePatient()" class="btn btn-primary">Set</a>
-      </form>
-    </div>
-  </div>
-
-  <br />
-
-  <div class="row">
-    <div>
-      <h3 class="sub-header">Is Patient</h3>
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <table>
-            <tr>
-              <td><label for="central-database-is-patient-address">Patient Address :</label> </td>
-              <td>
-                <input class="form-control" id="central-database-is-patient-address">
-              </td>
-            </tr>
-          </table>
-        </div>
-        <a href="#" onclick="isPatient()" class="btn btn-primary">Check</a>
-      </form>
-    </div>
-  </div>
-
-  <div class="row">
-    <div>
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <table>
-            <tr>
-              <td>Result: </td>
-              <td>
-                <label id="get-central-database-is-patient-address">
-              </td>
-            </tr>
-          </table>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <br />
-
-  <div class="row">
-    <div>
-      <h3 class="sub-header">Is Doctor</h3>
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <table>
-            <tr>
-              <td><label for="central-database-is-doctor-address">Doctor Address :</label> </td>
-              <td>
-                <input class="form-control" id="central-database-is-doctor-address">
-              </td>
-            </tr>
-          </table>
-        </div>
-        <a href="#" onclick="isDoctor()" class="btn btn-primary">Check</a>
-      </form>
-    </div>
-  </div>
-
-  <div class="row">
-    <div>
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <table>
-            <tr>
-              <td>Result: </td>
-              <td>
-                <label id="get-central-database-is-doctor-address">
-              </td>
-            </tr>
-          </table>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <br />
-
-  <div class="row">
-    <div>
-      <h3 class="sub-header">Is Hospital</h3>
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <table>
-            <tr>
-              <td><label for="central-database-is-hospital-address">Hospital Address :</label> </td>
-              <td>
-                <input class="form-control" id="central-database-is-hospital-address">
-              </td>
-            </tr>
-          </table>
-        </div>
-        <a href="#" onclick="isHospital()" class="btn btn-primary">Check</a>
-      </form>
-    </div>
-  </div>
-
-  <div class="row">
-    <div>
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <table>
-            <tr>
-              <td>Result: </td>
-              <td>
-                <label id="get-central-database-is-hospital-address">
-              </td>
-            </tr>
-          </table>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <br />
 
 
 
 
   <!-- <h1 class="page-header">Register information at Blockchain - RSK network</h1> -->
+
+
+  <div class="row">
+    <div>
+      <h3 class="sub-header">Remove Doctor and Hospital</h3>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <table>
+            <tr>
+              <td><label for="remove-doctor">Input Address to be removed :</label> </td>
+              <td>
+                <input class="form-control" id="remove-doctor">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <a href="#" onclick="removeDoctor()" class="btn btn-primary">Remove Doctor</a>
+      </form>
+    </div>
+  </div>
+
   <br />
   <br />
+
+  <div class="row">
+    <div>
+      <h3 class="sub-header">addMedicalData</h3>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <table>
+            <tr>
+              <td><label for="add-Medical-Data">Input string:</label> </td>
+              <td>
+                <input class="form-control" id="add-Medical-Data">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <a href="#" onclick="addMedicalData()" class="btn btn-primary">addMedicalData</a>
+      </form>
+    </div>
+  </div>
+
+  <br />
+  <br />
+
+  <div class="row">
+    <div>
+      <h3 class="sub-header">addHospitalByHospital</h3>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <table>
+            <tr>
+              <td><label for="add-Hospital-By-Hospital">Input Address :</label> </td>
+              <td>
+                <input class="form-control" id="add-Hospital-By-Hospital">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <a href="#" onclick="addHospitalByHospital()" class="btn btn-primary">addHospitalByHospital</a>
+      </form>
+    </div>
+  </div>
+
+  <br />
+  <br />
+
+  <div class="row">
+    <div>
+      <h3 class="sub-header">addHospitalByPatient</h3>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <table>
+            <tr>
+              <td><label for="add-Hospital-By-Patient">Input Address :</label> </td>
+              <td>
+                <input class="form-control" id="add-Hospital-By-Patient">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <a href="#" onclick="addHospitalByPatient()" class="btn btn-primary">addHospitalByPatient</a>
+      </form>
+    </div>
+  </div>
+
+  <br />
+  <br />
+
+
+  <div class="row">
+    <div>
+      <h3 class="sub-header">addDoctorByHospital</h3>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <table>
+            <tr>
+              <td><label for="add-Doctor-By-Hospital">Input Address :</label> </td>
+              <td>
+                <input class="form-control" id="add-Doctor-By-Hospital">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <a href="#" onclick="addDoctorByHospital()" class="btn btn-primary">addDoctorByHospital</a>
+      </form>
+    </div>
+  </div>
+
+  <br />
+  <br />
+
+  <div class="row">
+    <div>
+      <h3 class="sub-header">addDoctorByPatient</h3>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <table>
+            <tr>
+              <td><label for="add-Doctor-By-Patient">Input Address :</label> </td>
+              <td>
+                <input class="form-control" id="add-Doctor-By-Patient">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <a href="#" onclick="addDoctorByPatient()" class="btn btn-primary">addDoctorByPatient</a>
+      </form>
+    </div>
+  </div>
+
+  <br />
+  <br />
+
+  <div class="row">
+    <div>
+      <h3 class="sub-header">updateParentHospital</h3>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <table>
+            <tr>
+              <td><label for="update-Parent-Hospital">Input Address :</label> </td>
+              <td>
+                <input class="form-control" id="update-Parent-Hospital">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <a href="#" onclick="updateParentHospital()" class="btn btn-primary">updateParentHospital</a>
+      </form>
+    </div>
+  </div>
+
+  <br />
+  <br />
+
+
+
 
 
 </body>

@@ -1,0 +1,16 @@
+
+.btn-primary{
+  background-color: #343A40 !important;
+}
+@import 'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans';
+
+
+.navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase
+}
+
+a:hover
+{
+  color: yellow !important;
+}
