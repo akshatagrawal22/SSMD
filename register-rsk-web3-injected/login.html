@@ -1,314 +1,249 @@
 <html>
 
 <head>
-     <title>Secure Sharing of Medical Data</title>
+    <title>SSMD</title>
 
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"
+        integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
+    <link rel="icon" href="https://icon-library.com/images/healthcare-icon/healthcare-icon-7.jpg">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
-    <script src="./login.js"></script>
     <link rel="stylesheet" href="login.css">
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css"
-      rel="stylesheet"
-    /> 
 </head>
 
 <body>
     <div class="container">
-        <div class="child">
-            <!-- <button id='loginButton' onclick="" class="">
-              Login with MetaMask
-            </button>
-            <p id='userWallet' class='text-lg text-gray-600 my-2'></p>
-            <button class="enableEthereumButton">Login with Metamask</button>
-            <h2>Account: <span class="showAccount"></span></h2> -->
-
+        <div class="header">
             <button id='loginButton' onclick="connectWallet()">Login with Metamask</button>
-            <p id='userWallet'></p>
-            <button id='userRole' onclick="role()">Role</button>
-            <p id='userRole'></p>
-            <button onClick="dashboardGo">Continue to dashboard..........</button>
+        </div>
+        <div class="wrap">
+
+            <div class="group">
+                <i class="fa fa-envelope"></i>
+                <p id='userWallet'>
+                    Account Number
+                </p>
+
+            </div>
+
+            <div class="group">
+                <i class="fa fa-user" id="role_icon"></i>
+                <p id='user'>
+                Role
+                </p>
+            </div>
+
+            <div class="group">
+                <button onclick="dashboardGo()">Continue</button>
+            </div>
 
         </div>
-
-
     </div>
-   
-      
-      <script>
 
-            // const ethereumButton = document.querySelector('.enableEthereumButton');
-            // const showAccount = document.querySelector('.showAccount');
+    <script>
 
-            // ethereumButton.addEventListener('click', () => {
-            //     getAccount();
-            // });
+        var contract;// = new web3.eth.Contract(abi, contractAddress);
 
-            // async function getAccount() {
-            // const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-            // console.log(accounts);
-            // const account = accounts[0];
-            // showAccount.innerHTML = account;
-            // }
-                var contract;// = new web3.eth.Contract(abi, contractAddress);
-
-                // Accounts
-                var account;
-                var abiCenteralDatabase =[
-	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "userAddress",
-				"type": "address"
-			}
-		],
-		"name": "isDoctor",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "userAddress",
-				"type": "address"
-			}
-		],
-		"name": "isHospital",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "userAddress",
-				"type": "address"
-			}
-		],
-		"name": "isPatient",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "userAddress",
-				"type": "address"
-			}
-		],
-		"name": "role",
-		"outputs": [
-			{
-				"internalType": "int256",
-				"name": "",
-				"type": "int256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "userAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "identityCardAddress",
-				"type": "address"
-			}
-		],
-		"name": "updateDoctor",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "userAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "identityCardAddress",
-				"type": "address"
-			}
-		],
-		"name": "updateHospital",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "userAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "identityCardAddress",
-				"type": "address"
-			}
-		],
-		"name": "updatePatient",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	}
-];
-                var reply;
-                var centralDatabaseContractAddress='0x59E20A3674f673955439f0C48bfe7a9e1ad4969A';
-               
-                function dashboardGo()
-                {
-                    if(reply== -1)
+        // Accounts
+        var account;
+        var abiCenteralDatabase = [
+            {
+                "inputs": [],
+                "stateMutability": "nonpayable",
+                "type": "constructor"
+            },
+            {
+                "inputs": [
                     {
-                        window.alert("You are not authorised on this blockchain. Contact Admin.");
+                        "internalType": "address",
+                        "name": "userAddress",
+                        "type": "address"
                     }
-                    else if(reply==0){ location.replace("./Windows/hospital.html");}
-                    else if(reply==1){ location.replace("./Widows/doctor.html");}
-                    else if(reply==2){ location.replace("./Windows/patient.html");}
-                
-                }
+                ],
+                "name": "isDoctor",
+                "outputs": [
+                    {
+                        "internalType": "bool",
+                        "name": "",
+                        "type": "bool"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "userAddress",
+                        "type": "address"
+                    }
+                ],
+                "name": "isHospital",
+                "outputs": [
+                    {
+                        "internalType": "bool",
+                        "name": "",
+                        "type": "bool"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "userAddress",
+                        "type": "address"
+                    }
+                ],
+                "name": "isPatient",
+                "outputs": [
+                    {
+                        "internalType": "bool",
+                        "name": "",
+                        "type": "bool"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "userAddress",
+                        "type": "address"
+                    }
+                ],
+                "name": "role",
+                "outputs": [
+                    {
+                        "internalType": "int256",
+                        "name": "",
+                        "type": "int256"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "userAddress",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "identityCardAddress",
+                        "type": "address"
+                    }
+                ],
+                "name": "updateDoctor",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "userAddress",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "identityCardAddress",
+                        "type": "address"
+                    }
+                ],
+                "name": "updateHospital",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "userAddress",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "identityCardAddress",
+                        "type": "address"
+                    }
+                ],
+                "name": "updatePatient",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            }
+        ];
+        var reply;
+        var centralDatabaseContractAddress = '0x6E27e096eB1BDDe04817A906B418c8769b033fee';
 
-                function role()
-                {
+        function dashboardGo() {
+            if (reply == -1) {
+                window.alert("You are not authorised on this blockchain. Contact Admin.");
+            }
+            else if (reply == 0) { location.assign("./Dashboards/hospital.html"); }
+            else if (reply == 1) { location.assign("./Dashboards/doctor.html"); }
+            else if (reply == 2) { location.assign("./Dashboards/patient.html"); }
+
+        }
+
+        async function connectWallet() {
+            if (window.ethereum) { //check if Metamask is installed
+                window.web3 = new Web3(window.ethereum);
+                try {
+                    const address = await window.ethereum.enable(); //connect Metamask
+                    account = address[0];
+                    userWallet.innerText = address[0];
+                    loginButton.innerText = 'Retry'
+                    console.log(address);
+
                     reply = -4;
                     contract = new web3.eth.Contract(abiCenteralDatabase, centralDatabaseContractAddress);
-                   
+
                     contract.methods.role(account).call(function (err, res) {
                         if (err) {
                             console.log("An error occured", err)
                             return
                         }
-                        console.log("The reply is: ", res)
+                        console.log("The role is: ", res)
                         reply = res;
-                        console.log(res);
+                        if (reply == 0) {
+                            user.innerText = "Hospital";
+                        }
+                        else if (reply == 1) {
+                            user.innerText = "Doctor";
+                        }
+                        else if (reply == 2) {
+                            user.innerText = "Patient";
+                        }
+                        else {
+                            user.innerText = "Invalid User";
+                        }
                     })
-                    
-                    
+
+                } catch (error) {
+
+                    return;
                 }
 
-
-           
-            async function connectWallet() {
-            if (window.ethereum) { //check if Metamask is installed
-                window.web3 = new Web3(window.ethereum);
-                    try {
-                        const address = await window.ethereum.enable(); //connect Metamask
-                        account = address[0];
-                        userWallet.innerText = address[0];
-                        loginButton.innerText = 'Retry'
-                        console.log(address);
-                     
-                    } catch (error) {
-                        
-                        return;
-                    }
-                    
             } else if (window.web3) {
                 window.web3 = new Web3(window.web3.currentProvider)
                 // no need to ask for permission
-                }else {
-                       console.log("🦊 You must install Metamask into your browser: https://metamask.io/download.html");      
-            } 
-            };
+            } else {
+                console.log("🦊 You must install Metamask into your browser: https://metamask.io/download.html");
+            }
+        };
+    </script>
 
-        // window.userWalletAddress = null
-        // const loginButton = document.getElementById('loginButton')
-        // const userWallet = document.getElementById('userWallet')
-    
-        // function toggleButton() {
-        //   if (!window.ethereum) {
-        //     loginButton.innerText = 'MetaMask is not installed'
-        //     loginButton.classList.remove('bg-purple-500', 'text-white')
-        //     loginButton.classList.add('bg-gray-500', 'text-gray-100', 'cursor-not-allowed')
-        //     return false
-        //   }
-    
-        //   loginButton.addEventListener('click', loginWithMetaMask)
-        // }
-    
-        // async function loginWithMetaMask() {
-        //   const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
-        //     .catch((e) => {
-        //       console.error(e.message)
-        //       return
-        //     })
-        //   if (!accounts) { return }
-    
-        //   window.userWalletAddress = accounts[0]
-        //   userWallet.innerText = window.userWalletAddress
-        //   loginButton.innerText = 'Sign out of MetaMask'
-    
-        //   loginButton.removeEventListener('click', loginWithMetaMask)
-        //   setTimeout(() => {
-        //     loginButton.addEventListener('click', signOutOfMetaMask)
-        //   }, 200)
-        // }
-    
-        // function signOutOfMetaMask() {
-        //   window.userWalletAddress = null
-        //   userWallet.innerText = ''
-        //   loginButton.innerText = 'Sign in with MetaMask'
-    
-        //   loginButton.removeEventListener('click', signOutOfMetaMask)
-        //   setTimeout(() => {
-        //     loginButton.addEventListener('click', loginWithMetaMask)
-        //   }, 200)
-        // }
-    
-        // window.addEventListener('DOMContentLoaded', () => {
-        //   toggleButton()
-        // });
-
-       
-
-      </script>
 </body>
 
 </html>
