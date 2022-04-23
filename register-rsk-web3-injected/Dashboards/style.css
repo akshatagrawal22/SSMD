@@ -1,7 +1,8 @@
 
 body{
-    background-color: whitesmoke;
     padding-bottom: 20px;
+    font-family: "Poppins", sans-serif;
+    background-color: #fafafa;
   }
   
   .navbar-brand {
@@ -18,52 +19,73 @@ body{
 
   }
   
-  .content-table {
+  /* table, tr, td{
+    border:none;
+   } */
+   .content {
+    
     /* display: inline; */
       font-family: "Lato", sans-serif;
       border-collapse: collapse;
-      min-width: 50%;
-      margin-left: 20%;
+      width: fit-content;
+      /* min-width: 50%; */
+      /* margin-left: 20%; */
       margin-top: 20px;
+      margin-bottom: 20px;
       /* margin-right: auto; */
       border-radius: 5px 5px 0 0;
       overflow: hidden;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     }
     
-    .content-table td{
+    .content td{
       border: 1px solid #dddddd;
-      background-color: white;
       text-align: left;
-      padding: 8px;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
     }
-  
-    .content-table thead th {
-      border: 1px solid #dddddd;
-      background-color: #343A40;
-      color: white;
-      text-align: left;
-      padding: 8px;
-    }
-  
-    .content-table input{
-      border: none;
-    }
-    .details{
-      column-width: 120px; 
-      background-color: #343A40 !important; 
-      color: aliceblue; 
-      font-weight: bold;
-    }
+    .content input{
+      width: 430px !important;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    } 
+
+
+    .content-table {
+      /* display: inline; */
+        font-family: "Lato", sans-serif;
+        border-collapse: collapse;
+        min-width: 50%;
+        margin-left: 20%;
+        margin-top: 20px;
+        /* margin-right: auto; */
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+      }
+      
+      .content-table td{
+        border: 1px solid #dddddd;
+        background-color: white;
+        text-align: left;
+        padding: 8px;
+      }
+    
+      .content-table th {
+        border: 1px solid #dddddd;
+        background-color: #343A40;
+        color: white;
+        text-align: left;
+        padding: 8px;
+      }
   
   .btn button{
-      margin-top: 1rem;
-      margin-left: 295px;
       text-transform: uppercase;
       border-color: transparent;
       /* float: centre; */
       padding: 5px 15px;
-      box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
       font-family: "Lato", sans-serif;
       color: white;
       /* color: #343A40; */
@@ -79,4 +101,156 @@ body{
   .btn button:hover
   {
       transform: translateY(-2px);
+  }
+  .btn-accept button{
+      text-transform: uppercase;
+      border-color: transparent;
+      /* float: centre; */
+      padding: 2px 15px;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+      font-family: "Lato", sans-serif;
+      color: white;
+      /* color: #343A40; */
+      font-size: 14px;
+      letter-spacing: 1px;
+      font-weight: bold;
+      background-color: #1E8449;
+      /* background-color: white; */
+      border-radius: 0.8rem;
+      cursor: pointer;
+      transition: 0.5s cubic-bezier(0.2, 0.82, 0.165, 1);
+  }
+  .btn-accept button:hover
+  {
+      transform: translateY(-2px);
+  }
+  .btn-reject button{
+      text-transform: uppercase;
+      border-color: transparent;
+      /* float: centre; */
+      padding: 2px 15px;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+      font-family: "Lato", sans-serif;
+      color: white;
+      /* color: #343A40; */
+      font-size: 14px;
+      letter-spacing: 1px;
+      font-weight: bold;
+      background-color: #E74C3C;
+      /* background-color: white; */
+      border-radius: 0.8rem;
+      cursor: pointer;
+      transition: 0.5s cubic-bezier(0.2, 0.82, 0.165, 1);
+  }
+  .btn-reject button:hover
+  {
+      transform: translateY(-2px);
+  }
+
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card {
+    border-radius: 5px;
+    box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+    padding: 30px;
+    margin: 20px;
+    transition: all 0.3s ease-out;
+    color: black;
+  }
+  
+  .card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .card p {
+    color: black;
+    font-size: 16px;
+  }
+  .flex-parent {
+    display: flex;
+  }
+  .flex-child {
+    flex: 1;
+  }
+
+  /* .cardTop h2{
+    color: #343A40;
+    font-size: 16px;
+  } */
+
+  textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+  }
+
+
+ 
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  input[type=submit] {
+    background-color: #343A40;;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #343A40;;
+  }
+  
+  .container {
+    border-radius: 5px;
+    padding: 8px;
+  }
+  
+  .col-25 {
+    float: left;
+    width: 15%;
+    margin-top: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 85%;
+    margin-top: 6px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
   }

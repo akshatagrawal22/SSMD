@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="login.css">
+
+    <script src="/data.js"></script>
+
 </head>
 
 <body>
@@ -29,7 +32,7 @@
             <div class="group">
                 <i class="fa fa-user" id="role_icon"></i>
                 <p id='user'>
-                Role
+                    Role
                 </p>
             </div>
 
@@ -46,145 +49,7 @@
 
         // Accounts
         var account;
-        var abiCenteralDatabase = [
-            {
-                "inputs": [],
-                "stateMutability": "nonpayable",
-                "type": "constructor"
-            },
-            {
-                "inputs": [
-                    {
-                        "internalType": "address",
-                        "name": "userAddress",
-                        "type": "address"
-                    }
-                ],
-                "name": "isDoctor",
-                "outputs": [
-                    {
-                        "internalType": "bool",
-                        "name": "",
-                        "type": "bool"
-                    }
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [
-                    {
-                        "internalType": "address",
-                        "name": "userAddress",
-                        "type": "address"
-                    }
-                ],
-                "name": "isHospital",
-                "outputs": [
-                    {
-                        "internalType": "bool",
-                        "name": "",
-                        "type": "bool"
-                    }
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [
-                    {
-                        "internalType": "address",
-                        "name": "userAddress",
-                        "type": "address"
-                    }
-                ],
-                "name": "isPatient",
-                "outputs": [
-                    {
-                        "internalType": "bool",
-                        "name": "",
-                        "type": "bool"
-                    }
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [
-                    {
-                        "internalType": "address",
-                        "name": "userAddress",
-                        "type": "address"
-                    }
-                ],
-                "name": "role",
-                "outputs": [
-                    {
-                        "internalType": "int256",
-                        "name": "",
-                        "type": "int256"
-                    }
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [
-                    {
-                        "internalType": "address",
-                        "name": "userAddress",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "address",
-                        "name": "identityCardAddress",
-                        "type": "address"
-                    }
-                ],
-                "name": "updateDoctor",
-                "outputs": [],
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "inputs": [
-                    {
-                        "internalType": "address",
-                        "name": "userAddress",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "address",
-                        "name": "identityCardAddress",
-                        "type": "address"
-                    }
-                ],
-                "name": "updateHospital",
-                "outputs": [],
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "inputs": [
-                    {
-                        "internalType": "address",
-                        "name": "userAddress",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "address",
-                        "name": "identityCardAddress",
-                        "type": "address"
-                    }
-                ],
-                "name": "updatePatient",
-                "outputs": [],
-                "stateMutability": "nonpayable",
-                "type": "function"
-            }
-        ];
         var reply;
-        var centralDatabaseContractAddress = '0x6E27e096eB1BDDe04817A906B418c8769b033fee';
 
         function dashboardGo() {
             if (reply == -1) {
@@ -193,7 +58,6 @@
             else if (reply == 0) { location.assign("./Dashboards/hospital.html"); }
             else if (reply == 1) { location.assign("./Dashboards/doctor.html"); }
             else if (reply == 2) { location.assign("./Dashboards/patient.html"); }
-
         }
 
         async function connectWallet() {
