@@ -1,4 +1,5 @@
 var identityCardContractAddress = '0x267EE4b8eC7357252B6b8A2E6A2481AB40Da5076';
+var medicalDataContractAddress = '0x267EE4b8eC7357252B6b8A2E6A2481AB40Da5076';
 
 if (window.ethereum) {
 	window.web3 = new Web3(window.ethereum)
@@ -28,6 +29,7 @@ var account;
 var newAccount;
 var newIdCardAddress;
 var newMedicalCardAddress;
+
 
 //Web3 fucntions
 web3.eth.getAccounts(function (err, accounts) {

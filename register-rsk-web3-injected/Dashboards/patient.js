@@ -152,7 +152,7 @@ async function removeHospitalByPatient()
 {
 	info = $("#remove-Hospital-By-Patient").val();
 
-	//await removeHospitalFromMedicalData(info);
+	await removeHospitalFromMedicalData(info);
 	await removeHospitalFromCentralDatabase(info);
 
 	$("#remove-Hospital-By-Patient").val('');
@@ -308,7 +308,7 @@ function buildTableForRequests()
 	var table = document.getElementById("view-requests");
 		
 	table.style.display = 'inline-table';
-		
+	table.innerHTML = "";
 
 	for (var i = 0; i < data.length; i++) 
 	{
