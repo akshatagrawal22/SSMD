@@ -92,7 +92,7 @@ async function loadLogs()
 
 async function viewMedicalDataByPatient()
 {
-	$("#view-medical-data-by-patient").css({"display": "none"});
+	//$("#view-medical-data-by-patient").css({"display": "none"});
 	contract = new web3.eth.Contract(abiMedicalData, medicalDataContractAddress);
   	contract.methods.viewMedicalDataByPatient().call(function (err, res) {
 		if (err) {
@@ -106,7 +106,7 @@ async function viewMedicalDataByPatient()
 
 async function loadAuthorisedHospitalsArray()
 {
-	$("#load-authorised-hospitals-array").css({"display": "none"});
+	//$("#load-authorised-hospitals-array").css({"display": "none"});
 	contract = new web3.eth.Contract(abiMedicalData, medicalDataContractAddress);
   	contract.methods.viewAuthorisedHospitalsArray().call(function (err, res) {
 		if (err) {
@@ -121,7 +121,7 @@ async function loadAuthorisedHospitalsArray()
 
 async function loadAuthorisedDoctorsArray()
 {
-	$("#load-authorised-doctors-array").css({"display": "none"});
+	//$("#load-authorised-doctors-array").css({"display": "none"});
 	contract = new web3.eth.Contract(abiMedicalData, medicalDataContractAddress);
   	contract.methods.viewAuthorisedDoctorsArray().call(function (err, res) {
 		if (err) {
@@ -152,7 +152,7 @@ async function removeHospitalByPatient()
 {
 	info = $("#remove-Hospital-By-Patient").val();
 
-	await removeHospitalFromMedicalData(info);
+	//await removeHospitalFromMedicalData(info);
 	await removeHospitalFromCentralDatabase(info);
 
 	$("#remove-Hospital-By-Patient").val('');
@@ -230,7 +230,7 @@ function buildtable(data,id)
 	var table = document.getElementById(id);
 		
 	table.style.display = 'inline-table';
-		
+	table.innerHTML = "";
 
 	for (var i = 0; i < data.length; i++) {
 	var row =
@@ -249,7 +249,7 @@ var requests=[];
 var len;
 async function getRequests()
 {
-	$("#get-requests").css({"display": "none"});
+	//$("#get-requests").css({"display": "none"});
 	contract = new web3.eth.Contract(abiMedicalData, medicalDataContractAddress);
 	contract.methods.viewRequests().call(function (err, res) {
 		if (err) {

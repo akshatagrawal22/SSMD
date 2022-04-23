@@ -132,7 +132,7 @@ function loadAuthorizedPatientList()
 	// authPatientList.push('1234');
 	// console.log(authPatientList);
 	// buildtable(authPatientList, 'authorizedPatients');
-	$("#load-patients-of-doctor").css({"display": "none"});
+	//$("#load-patients-of-doctor").css({"display": "none"});
 	contract = new web3.eth.Contract(abiCenteralDatabase, centralDatabaseContractAddress);
 	contract.methods.loadPatientsOfDoctor().call(function (err, res) 
 	{
@@ -221,7 +221,7 @@ function buildtable(data, id)
 	var table = document.getElementById(id);
 
 	table.style.display = 'inline-table';
-
+	table.innerHTML = "";
 
 	for (var i = 0; i < data.length; i++) {
 		var row =

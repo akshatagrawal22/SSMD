@@ -1,5 +1,3 @@
-var identityCardContractAddress = '0x267EE4b8eC7357252B6b8A2E6A2481AB40Da5076';
-var medicalDataContractAddress = '0x267EE4b8eC7357252B6b8A2E6A2481AB40Da5076';
 
 if (window.ethereum) 
 {
@@ -80,7 +78,7 @@ function addHospitalByHospital()
 
 function loadDoctorsofHospital()
 {
-	$("#load-doctors-of-hospital").css({"display": "none"});
+	//$("#load-doctors-of-hospital").css({"display": "none"});
 	contract = new web3.eth.Contract(abiCenteralDatabase, centralDatabaseContractAddress);
   	contract.methods.loadDoctorsOfHospital().call(function (err, res) {
 		if (err) {
@@ -96,7 +94,7 @@ function loadDoctorsofHospital()
 
 function loadPatientsofHospital()
 {
-	$("#load-patients-of-hospital").css({"display": "none"});
+	//$("#load-patients-of-hospital").css({"display": "none"});
 	contract = new web3.eth.Contract(abiCenteralDatabase, centralDatabaseContractAddress);
   	contract.methods.loadPatientsOfHospital().call(function (err, res) {
 		if (err) {
@@ -115,7 +113,7 @@ function loadPatientsofHospital()
 function updateDoctorInDatabase()
 {
 	contract = new web3.eth.Contract(abiCenteralDatabase, centralDatabaseContractAddress);
-	contract.methods.updateDoctor(newAccount.address,newIdCardAddress).send( {from: account}).then( function(tx) { 
+	contract.methods.updateDoctor(newAccount.address).send( {from: account}).then( function(tx) { 
 			console.log("Transaction: ", tx); 
 	});
 }
@@ -123,30 +121,30 @@ function updateDoctorInDatabase()
 function updatePatientInDatabase()
 {
 	contract = new web3.eth.Contract(abiCenteralDatabase, centralDatabaseContractAddress);
-	contract.methods.updatePatient(newAccount.address,newIdCardAddress,newMedicalCardAddress).send( {from: account}).then( function(tx) { 
+	contract.methods.updatePatient(newAccount.address,newMedicalCardAddress).send( {from: account}).then( function(tx) { 
 			console.log("Transaction: ", tx); 
 	});
 }
 
-async function  createIdCard(role){
+// async function  createIdCard(role){
 
-	var deployingContract = new web3.eth.Contract(abiIdentityCard).deploy({
-		data: bytecodeIdCard,
-		arguments: [role,newAccount.address]
-	});
+// 	var deployingContract = new web3.eth.Contract(abiIdentityCard).deploy({
+// 		data: bytecodeIdCard,
+// 		arguments: [role,newAccount.address]
+// 	});
 
-	console.log(deployingContract);
-	var estimateGas = await deployingContract.estimateGas();
-	var deployedContract = await deployingContract.send({
-		from: account,
-		gas: estimateGas
-	})
+// 	console.log(deployingContract);
+// 	var estimateGas = await deployingContract.estimateGas();
+// 	var deployedContract = await deployingContract.send({
+// 		from: account,
+// 		gas: estimateGas
+// 	})
 
-	console.log('Address of Id card contract' + deployedContract.options.address);
-	newIdCardAddress = deployedContract.options.address;
-	//document.getElementById('new-id-card-address').innerText = "Address of Id - Card : "+ JSON.stringify(newIdCardAddress);
+// 	console.log('Address of Id card contract' + deployedContract.options.address);
+// 	newIdCardAddress = deployedContract.options.address;
+// 	//document.getElementById('new-id-card-address').innerText = "Address of Id - Card : "+ JSON.stringify(newIdCardAddress);
 	
-};
+// };
 
 
 async function  createMedicalData(){
@@ -186,18 +184,18 @@ async function createAccountandTransaction()
 async function createDoctor()
 {
 	await createAccountandTransaction();
-	await createIdCard(1);
+	//await createIdCard(1);
 	await updateDoctorInDatabase();
-	document.getElementById('new-doctor-account-details').innerText = "New Account Address: "+JSON.stringify(newAccount.address) + "\n" + "Private Key : " +JSON.stringify(newAccount.privateKey) + "\n" + "Address of Id - Card : "+ JSON.stringify(newIdCardAddress); 
+	document.getElementById('new-doctor-account-details').innerText = "New Account Address: "+JSON.stringify(newAccount.address) + "\n" + "Private Key : " +JSON.stringify(newAccount.privateKey); 
 }
 
 async function createPatient()
 {
 	await createAccountandTransaction();
-	await createIdCard(2);
+	//await createIdCard(2);
 	await createMedicalData();
 	await updatePatientInDatabase();
-	document.getElementById('new-patient-account-details').innerText = "New Account Address: "+JSON.stringify(newAccount.address) + "\n" + "Private Key : " +JSON.stringify(newAccount.privateKey) + "\n" + "Address of Id - Card : "+ JSON.stringify(newIdCardAddress)+ "\n" + "Address of Medical - Data Card : "+ JSON.stringify(newMedicalCardAddress); 
+	document.getElementById('new-patient-account-details').innerText = "New Account Address: "+JSON.stringify(newAccount.address) + "\n" + "Private Key : " +JSON.stringify(newAccount.privateKey) + "\n" + "Address of Medical - Data Card : "+ JSON.stringify(newMedicalCardAddress) ; 
 }
 
 function buildtable(data,id){
@@ -208,7 +206,7 @@ function buildtable(data,id){
 	var table = document.getElementById(id);
 		
 	table.style.display = 'inline-table';
-		
+	table.innerHTML="";
 
 	for (var i = 0; i < data.length; i++) {
 	var row =
@@ -216,7 +214,7 @@ function buildtable(data,id){
 	<td> ${i + 1}</td>
 	<td style="text-align: center;"> ${data[i]}</td>
 	</tr>`
-
+	
 	table.innerHTML += row;
 	}
 	
