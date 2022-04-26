@@ -64,32 +64,6 @@ web3.eth.getAccounts(function(err, accounts) {
   web3.eth.defaultAccount = account;
 });
 
-function addHospitalByPatient()
-{
-  contract = new web3.eth.Contract(abiMedicalData, medicalDataContractAddress);
-  info = $("#add-Hospital-By-Patient").val();
-  contract.methods.addHospitalByPatient(info).send( {from: account}).then( function(tx) { 
-         console.log("Transaction: ", tx); 
-  });
-  $("#add-Hospital-By-Patient").val('');
-}
-
-async function loadLogs()
-{
-	contract = new web3.eth.Contract(abiMedicalData, medicalDataContractAddress);
-  	contract.methods.getLog().call(function (err, res) {
-		if (err) {
-		  console.log("An error occured", err)
-		  return
-		}
-		console.log("The reply is: ", res)
-		
-		//document.getElementById('log-of-medical-data').innerHTML = res;
-		buildtable(res,'load-logs');
-
-	  })
-}
-
 async function viewMedicalDataByPatient()
 {
 	//$("#view-medical-data-by-patient").css({"display": "none"});
@@ -197,6 +171,7 @@ async function removeDoctorFromCentralDatabase(data)
 	});
 }
 
+
 async function addDoctorByPatient()
 {
 	info = $("#add-Doctor-By-Patient").val();
@@ -220,6 +195,34 @@ async function addToPatientsOfDoctorInCentralDatabase(data)
 			console.log("Transaction: ", tx); 
 	});
 }
+
+
+async function addHospitalByPatient()
+{
+	info = $("#add-Hospital-By-Patient").val();
+
+	await addHospitalToMedicalData(info);
+	await addToPatientsOfHospitalInCentralDatabase(info);
+
+	$("#add-Hospital-By-Patient").val('');
+}
+
+async function addHospitalToMedicalData(data)
+{
+	contract = new web3.eth.Contract(abiMedicalData, medicalDataContractAddress);
+	contract.methods.addHospitalByPatient(data).send( {from: account}).then( function(tx) { 
+			console.log("Transaction: ", tx); 
+	});
+}
+async function addToPatientsOfHospitalInCentralDatabase(data)
+{
+	contract = new web3.eth.Contract(abiCenteralDatabase, centralDatabaseContractAddress);
+	contract.methods.addToPatientsOfHospital(data).send( {from: account}).then( function(tx) { 
+			console.log("Transaction: ", tx); 
+	});
+}
+
+
 
 
 
@@ -262,14 +265,38 @@ async function getRequests()
 	})
 }
 
+
+async function checkRole(info)
+{
+	contract = new web3.eth.Contract(abiCenteralDatabase, centralDatabaseContractAddress);
+	contract.methods.role(info).call(function (err, res) 
+	{
+		if(res==0)
+			addHospitalToDatabases(info);
+		else if(res==1)
+			addDoctorToDatabases(info);
+	})
+}
+
+async function addHospitalToDatabases(info)
+{
+	await addHospitalToMedicalData(info);
+	await addToPatientsOfHospitalInCentralDatabase(info);
+}
+
+async function addDoctorToDatabases(info)
+{
+	await addDoctorToMedicalData(info);
+	await addToPatientsOfDoctorInCentralDatabase(info);
+}
+
 async function acceptRequest(info, idx)
 {
 	len--;
 	if(len==0)
 		$("#view-requests").css({"display": "none"});
 
-	await addDoctorToMedicalData(info);
-	await addToPatientsOfDoctorInCentralDatabase(info);
+	await checkRole(info);
 	await deleteRequest(idx)
 
 	var row_string = "#row" + idx ; 

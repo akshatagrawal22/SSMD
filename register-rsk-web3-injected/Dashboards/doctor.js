@@ -57,19 +57,9 @@ web3.eth.getAccounts(function (err, accounts) {
 	}
 	})
 	document.getElementById('account-address').innerText = "Account Address : " + account;
-	// document.getElementById('account-address').innerText = account;
 	console.log('Account: ' + account);
 	web3.eth.defaultAccount = account;
 });
-
-//role check
-
-//loadPatientsofHospital();
-//loadDoctorsofHospital();
-//getMedicalDataAddress();
-
-//Id Card Functions
-
 
 function addMedicalData() {
 	contract = new web3.eth.Contract(abiMedicalData, medicalDataContractAddress);
@@ -80,61 +70,8 @@ function addMedicalData() {
 	$("#add-Medical-data").val('');
 }
 
-// var authPatientList = [];
-
-// async function getAuthorizedPatientList() 
-// {
-// 	const contract = new web3.eth.Contract(abiCenteralDatabase, centralDatabaseContractAddress);
-// 	contract.methods.loadPatients().call(function (err, res) {
-// 		if (err) {
-// 			console.log("An error occured", err)
-// 			return
-// 		}
-
-// 		const fullPatientList = res;
-// 		console.log(res);
-
-// 		for (var i = 0; i < fullPatientList.length; i++) 
-// 		{
-// 			var patientAddress = fullPatientList[i];
-// 			// console.log(patientAddress)
-// 			// console.log(fullPatientList[i])
-// 			// contract.methods.getMedicalDataAddress(patientAddress).call(function (err, res)
-// 			contract.methods.getMedicalDataAddress(fullPatientList[i]).call(function (err, res)
-// 			{
-// 				console.log(fullPatientList[i])
-// 				if (err) {
-// 					console.log("An error occured", err)
-// 					return
-// 				}
-// 				const medicalDataContractAddress = res;
-// 				const medicalDataContract = new web3.eth.Contract(abiMedicalData, medicalDataContractAddress);
-// 				medicalDataContract.methods.isAuthorized().call(function (err, res)
-// 				{
-// 					if (err) {
-// 						console.log("An error occured", err)
-// 						return
-// 					}
-// 					if (res == true)
-// 					{
-// 						console.log(res)
-// 						console.log(patientAddress)
-// 						authPatientList.push(patientAddress);
-// 					}
-// 				})
-
-// 		})
-// 		}
-// 		// authPatientList.push('abcd');
-// 	})
-// }
-
 function loadAuthorizedPatientList() 
 {
-	// authPatientList.push('1234');
-	// console.log(authPatientList);
-	// buildtable(authPatientList, 'authorizedPatients');
-	//$("#load-patients-of-doctor").css({"display": "none"});
 	contract = new web3.eth.Contract(abiCenteralDatabase, centralDatabaseContractAddress);
 	contract.methods.loadPatientsOfDoctor().call(function (err, res) 
 	{

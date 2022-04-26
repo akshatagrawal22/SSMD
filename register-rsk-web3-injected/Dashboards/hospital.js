@@ -107,6 +107,26 @@ function loadPatientsofHospital()
 	  })
 }
 
+function requestNewPatient() 
+{
+	info = $("#request-New-Patient").val();
+	contract = new web3.eth.Contract(abiCenteralDatabase, centralDatabaseContractAddress);
+	contract.methods.getMedicalDataAddress(info).call(function (err, res) {
+		if (err) {
+			console.log("An error occured", err)
+			return
+		}
+		console.log("Medical data add is : ", res);
+		medicalDataContractAddress = res;
+		medicalDataContract = new web3.eth.Contract(abiMedicalData, medicalDataContractAddress);
+		medicalDataContract.methods.submitRequests().send({ from: account }).then(function (tx) {
+			console.log("Transaction: ", tx);
+		});
+	})
+	$("#request-New-Patient").val('');
+}
+
+
 //Creating Doctor and Patient
 
 
@@ -125,27 +145,6 @@ function updatePatientInDatabase()
 			console.log("Transaction: ", tx); 
 	});
 }
-
-// async function  createIdCard(role){
-
-// 	var deployingContract = new web3.eth.Contract(abiIdentityCard).deploy({
-// 		data: bytecodeIdCard,
-// 		arguments: [role,newAccount.address]
-// 	});
-
-// 	console.log(deployingContract);
-// 	var estimateGas = await deployingContract.estimateGas();
-// 	var deployedContract = await deployingContract.send({
-// 		from: account,
-// 		gas: estimateGas
-// 	})
-
-// 	console.log('Address of Id card contract' + deployedContract.options.address);
-// 	newIdCardAddress = deployedContract.options.address;
-// 	//document.getElementById('new-id-card-address').innerText = "Address of Id - Card : "+ JSON.stringify(newIdCardAddress);
-	
-// };
-
 
 async function  createMedicalData(){
 

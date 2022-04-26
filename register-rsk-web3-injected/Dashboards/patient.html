@@ -37,7 +37,6 @@
           &nbsp;
           Secure Sharing of Medical Data
         </span>
-        <!-- <p>Get Account Number Here and a logout button to redirect to login</p> -->
       </div>
   </div>
   <!-- Navbar -->
@@ -61,34 +60,6 @@
   </table>
 
   <div id="patient-data"></div>
-
-
-  <!-- <div class="card">
-    <table>
-      <tr>
-        <td>
-          <h1>Load Logs</h1>
-        </td>
-        <td>
-          <div class="btn">
-            <button onclick="loadLogs()">Load Logs</button>
-          </div>
-        </td>
-      </tr>
-    </table>
-
-    <div>
-      <table id="load-logs" class="content-table" style="display: none;">
-        <tr>
-          <th>
-            ID No</th>
-          <th style="text-align: center;">
-            ID
-          </th>
-        </tr>
-      </table>
-    </div>
-  </div> -->
 
 
   <div class="card">
@@ -119,7 +90,7 @@
   </div>
 
   <div class='flex-parent'>
-    
+
     <div class='flex-child card'>
       <table>
         <tr>
@@ -133,7 +104,7 @@
           </td>
         </tr>
       </table>
-  
+
       <div>
         <table id="load-auth-hospitals" class="content-table" style="display: none;">
           <tr>
@@ -145,156 +116,156 @@
           </tr>
         </table>
       </div>
-      
-      </div>
 
-      <div class='flex-child card'>
-        <table>
-          <tr>
-            <td>
-              <h1>Authorized Doctors</h1>
-            </td>
-            <td>
-              <div id="load-authorised-doctors-array" class="btn">
-                <button onclick="loadAuthorisedDoctorsArray()">Load Doctors</button>
-              </div>
-            </td>
-          </tr>
-        </table>
-    
-        <div>
-          <table id="load-auth-doctors" class="content-table" style="display: none;">
-            <tr>
-              <th>
-                ID No</th>
-              <th style="text-align: center;">
-                ID
-              </th>
-            </tr>
-          </table>
-        </div>
-        
-      </div>
     </div>
 
-    <div class='flex-parent'>
-      <div class='flex-child card'>
-        <table>
+    <div class='flex-child card'>
+      <table>
+        <tr>
+          <td>
+            <h1>Authorized Doctors</h1>
+          </td>
+          <td>
+            <div id="load-authorised-doctors-array" class="btn">
+              <button onclick="loadAuthorisedDoctorsArray()">Load Doctors</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <div>
+        <table id="load-auth-doctors" class="content-table" style="display: none;">
           <tr>
-            <h1>Add Hospital</h1>
+            <th>
+              ID No</th>
+            <th style="text-align: center;">
+              ID
+            </th>
           </tr>
         </table>
-        <table class="content">
-          <tr>
-            <td >Hospital's Account No</td>
-            <td >
-              <input type="text" id="add-Hospital-By-Patient" >
-            </td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <td>
-              <div class="btn">
-                <button onclick="addHospitalByPatient()">
-                  ADD
-                </button>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class='flex-child card'>
-        <table>
-          <tr>
-            <td>
-              <h1>Add Doctor</h1>
-            </td>
-          </tr>
-        </table>
-        <table class="content">
-          <tr>
-            <td>Doctor's Account No</td>
-            <td>
-              <input type="text" id="add-Doctor-By-Patient">
-            </td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <td>
-              <div class="btn">
-                <button onclick="addDoctorByPatient()">
-                  ADD
-                </button>
-              </div>
-            </td>
-          </tr>
-        </table>
-        </div>
       </div>
 
-      
-    <div class='flex-parent'>
-      <div class='flex-child card'>
-        <table>
-          <tr>
-            <td>
-              <h1>Remove Hospital</h1>
-            </td>
-          </tr>
-        </table>
-        <table class="content">
-          <tr>
-            <td>Hospital's Account No</td>
-            <td>
-              <input type="text" id="remove-Hospital-By-Patient">
-            </td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <td>
-              <div class="btn">
-                <button onclick="removeHospitalByPatient()">
-                  Remove
-                </button>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class='flex-child card'>
-        <table>
-          <tr>
-            <td>
-              <h1>Remove Doctor</h1>
-            </td>
-          </tr>
-        </table>
-        <table class="content">
-    
-          <tr>
-            <td>Doctor's Account No</td>
-            <td>
-              <input type="text" id="remove-Doctor-By-Patient">
-            </td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <td>
-              <div class="btn">
-                <button onclick="removeDoctorByPatient()">
-                  Remove
-                </button>
-              </div>
-            </td>
-    
-          </tr>
-        </table>
-        </div>
-      </div>
+    </div>
+  </div>
+
+  <div class='flex-parent'>
+    <div class='flex-child card'>
+      <table>
+        <tr>
+          <h1>Add Hospital</h1>
+        </tr>
+      </table>
+      <table class="content">
+        <tr>
+          <td>Hospital's Account No</td>
+          <td>
+            <input type="text" id="add-Hospital-By-Patient">
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+            <div class="btn">
+              <button onclick="addHospitalByPatient()">
+                ADD
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class='flex-child card'>
+      <table>
+        <tr>
+          <td>
+            <h1>Add Doctor</h1>
+          </td>
+        </tr>
+      </table>
+      <table class="content">
+        <tr>
+          <td>Doctor's Account No</td>
+          <td>
+            <input type="text" id="add-Doctor-By-Patient">
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+            <div class="btn">
+              <button onclick="addDoctorByPatient()">
+                ADD
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+  <div class='flex-parent'>
+    <div class='flex-child card'>
+      <table>
+        <tr>
+          <td>
+            <h1>Remove Hospital</h1>
+          </td>
+        </tr>
+      </table>
+      <table class="content">
+        <tr>
+          <td>Hospital's Account No</td>
+          <td>
+            <input type="text" id="remove-Hospital-By-Patient">
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+            <div class="btn">
+              <button onclick="removeHospitalByPatient()">
+                Remove
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class='flex-child card'>
+      <table>
+        <tr>
+          <td>
+            <h1>Remove Doctor</h1>
+          </td>
+        </tr>
+      </table>
+      <table class="content">
+
+        <tr>
+          <td>Doctor's Account No</td>
+          <td>
+            <input type="text" id="remove-Doctor-By-Patient">
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+            <div class="btn">
+              <button onclick="removeDoctorByPatient()">
+                Remove
+              </button>
+            </div>
+          </td>
+
+        </tr>
+      </table>
+    </div>
+  </div>
 
   <div class='card'>
     <table>
@@ -326,8 +297,8 @@
         </tr>
       </table>
     </div>
-    
-    </div>
+
+  </div>
 
 </body>
 
