@@ -1,4 +1,4 @@
-# Secure Sharing of Medical data
+# Secure Sharing of Medical Data
 
 ### **Welcome 👋**
 
