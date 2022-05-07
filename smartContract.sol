@@ -75,6 +75,14 @@ pragma solidity >=0.7.0;
             patientsOfDoctor[userAddress].push(msg.sender);
         }
 
+        function addToPatientsOfHospital(address userAddress) public 
+        {
+            require(patient[msg.sender]==1);
+            require(hospital[userAddress]==1);
+
+            patientsOfHospital[userAddress].push(msg.sender);
+        }
+
         function deleteHospitalFromPatient(address userAddress) public 
         {
             require(patient[msg.sender]==1);
@@ -268,9 +276,7 @@ pragma solidity >=0.7.0;
                     }
                     authorisedDoctorsArray.pop();
                 }
-
                 doctorMap[userAddress] = 0;
-                // log.push(string(abi.encodePacked(uint2str(block.timestamp)," :: Removed Doctor: ", toAsciiString(userAddress) ," by User.")));
         }
 
         function removeDoctorByHospital(address userAddress) onlyOwner public 
@@ -297,10 +303,7 @@ pragma solidity >=0.7.0;
                     authorisedDoctorsArray.pop();
                 }
 
-                doctorMap[userAddress] = 0;
-                // log.push(string(abi.encodePacked(uint2str(block.timestamp)," :: Removed Doctor : ", toAsciiString(userAddress)  ," by Hospital: ",toAsciiString(msg.sender),".")));
-                
-            
+                doctorMap[userAddress] = 0;                
         }
 
         
@@ -310,14 +313,15 @@ pragma solidity >=0.7.0;
                 require(_owner == msg.sender);
                 CentralDatabase centralDatabase = CentralDatabase(_centralDatabase);
                 
-                //require(hospitalMap[userAddress] == 1);
+                require(hospitalMap[userAddress] == 1);
                 uint ind = 0;
                 for(uint i=0;i<authorisedHospitalsArray.length ;i++)
                 {
                     if(authorisedHospitalsArray[i] == userAddress)
                         ind=i+1;
                 }
-                if(centralDatabase.getParentHospital(msg.sender)!=userAddress){
+                if(centralDatabase.getParentHospital(msg.sender)!=userAddress)
+                {
                     if(ind>0 && ind <= authorisedHospitalsArray.length)
                     {
                         ind = ind - 1;
@@ -357,9 +361,6 @@ pragma solidity >=0.7.0;
                         authorisedDoctorsArray.pop();
                     }
                 }
-                 
-                // log.push(string(abi.encodePacked(uint2str(block.timestamp)," :: Removed Hospital : ", toAsciiString(userAddress) ," by User.")));
-            
                
         }
 
@@ -367,7 +368,6 @@ pragma solidity >=0.7.0;
         function editMedicalData(string memory data) public returns(bool){
             require(_owner!=msg.sender);
             require(doctorMap[msg.sender]==1);
-            // log.push( string(abi.encodePacked(uint2str(block.timestamp),":: Edited Medical Data by Doctor: ",toAsciiString(msg.sender)," .")));
             medicalData.push(data);
             return true;
         }
@@ -393,7 +393,6 @@ pragma solidity >=0.7.0;
             require(hospitalMap[userAddress]==0);
             authorisedHospitalsArray.push(userAddress);
             hospitalMap[userAddress]=1;
-            // log.push(string(abi.encodePacked(uint2str(block.timestamp)," :: Added Hospital: ", toAsciiString(userAddress) ," by Hospital: ",toAsciiString(msg.sender),".")));
             return true;
         }
 
@@ -406,9 +405,7 @@ pragma solidity >=0.7.0;
             require(hospitalMap[userAddress]==0);
 
             authorisedHospitalsArray.push(userAddress);
-            hospitalMap[userAddress]=1;
-            // log.push(string(abi.encodePacked(uint2str(block.timestamp)," :: Added Hospital: ", toAsciiString(userAddress) ," by User.")));
-            
+            hospitalMap[userAddress]=1;            
             return true;
         }
 
@@ -424,7 +421,6 @@ pragma solidity >=0.7.0;
             
             doctorMap[userAddress]=1;
             authorisedDoctorsArray.push(userAddress);
-            // log.push(string(abi.encodePacked(uint2str(block.timestamp)," :: Added Doctor: ", toAsciiString(userAddress) ," by Hospital: ",toAsciiString(msg.sender),".")));
             return true;
         }
 
@@ -436,7 +432,6 @@ pragma solidity >=0.7.0;
 
             doctorMap[userAddress]=1;
             authorisedDoctorsArray.push(userAddress);
-            // log.push(string(abi.encodePacked(uint2str(block.timestamp)," :: Added Doctor: ", toAsciiString(userAddress) ," by User.")));
             return true;
         }
         
