@@ -2,7 +2,7 @@
 
 ### **Welcome 👋**
 
-Make sure you have a Local test Network running and connected with Metamask.
+Make sure you have a Test Network running and connected with Metamask.
 
 Instructions to run the DAPP:
 
