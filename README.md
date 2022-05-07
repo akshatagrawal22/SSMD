@@ -11,4 +11,4 @@ Instructions to run the DAPP:
 3. After that paste the address of the Central database in the data.js file.
 4. Run `npm install` at the root of the SSMD directory.
 5. Run `node server.js` to start the project
-6. Go to localhost:3000/login.html to use the DAPP.
+6. Go to localhost:3300/login.html to use the DAPP.
