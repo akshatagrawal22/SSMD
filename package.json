@@ -1,8 +1,8 @@
 {
-  "name": "Register",
+  "name": "SSMD",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "DAPP for secure sharing of medical data",
+  "main": "login.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +13,7 @@
     "rsk",
     "web3"
   ],
-  "author": "Solange Gueiros <solangegueiros@gmail.com> (https://solange.dev)",
+  "author": "Akshat Agrawal <akshat.agrawal22@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
